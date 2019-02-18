@@ -1,9 +1,12 @@
 const path = require("path");
 const router = require("express").Router();
-const propertyController = require("../controllers/propertyController");
+const itemController = require("../controllers/itemController");
 
-router.route("/api/properties/:propertyid")
-  .get(propertyController.findOne)
+router.route("/api/items")
+  .get(itemController.findAll)
+
+router.route("/api/items/:itemid")
+  .get(itemController.findOne)
 
 // If no API routes are hit, send the React app
 // router.use(function(req, res) {
