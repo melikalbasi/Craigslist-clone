@@ -5,10 +5,12 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const db = require("./models");
 
-// Define middleware here
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static("client/build"));
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 app.use(routes);
 
